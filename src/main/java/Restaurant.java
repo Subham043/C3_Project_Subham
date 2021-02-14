@@ -9,12 +9,14 @@ public class Restaurant {
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
+    private int totalPrice;
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
         this.location = location;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
+        this.totalPrice = 0;
     }
 
     public boolean isRestaurantOpen() {
@@ -67,6 +69,21 @@ public class Restaurant {
 
     public String getName() {
         return name;
+    }
+
+    //method to calculate the total item price on selecting of item
+    public void orderValue(String itemName){
+        Item item = findItemByName(itemName);
+        if(item != null){
+            int itemPrice = item.getPrice();
+            totalPrice += itemPrice;
+        }
+
+    }
+
+    //method to display total price
+    public int getOrderTotalValue(){
+        return totalPrice;
     }
 
 }
