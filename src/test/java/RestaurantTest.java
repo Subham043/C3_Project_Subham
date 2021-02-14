@@ -45,6 +45,25 @@ class RestaurantTest {
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //-------TESTS FOR ORDER TOTAL PRICE
+
+    @Test
+    public void Order_total_price_initially_should_be_zero(){
+        assertEquals(0,restaurant.getOrderTotalValue());
+    }
+
+    @Test
+    public void Order_total_price_should_be_the_respective_item_price_on_adding_the_first_menu_item(){
+        restaurant.orderValue("Sweet corn soup");
+        assertEquals(119,restaurant.getOrderTotalValue());
+    }
+
+    @Test
+    public void Order_total_price_should_be_the_total_of_the_first_menu_item_and_second_menu_item_on_adding_the_second_menu_item(){
+        restaurant.orderValue("Sweet corn soup");
+        restaurant.orderValue("Vegetable lasagne");
+        assertEquals(388,restaurant.getOrderTotalValue());
+    }
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
